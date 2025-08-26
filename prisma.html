@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prisma Segitiga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a04979;">
+    <div class="container-fluid">
+      <a class="navbar-brand animate__animated animate__bounce" href="#">Aplikasi Hitung Bangun Ruang</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="beranda.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="kubus.html">Kubus</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="tabung.html">Tabung</a></li>
+          <li class="nav-item"><a class="nav-link active animate__animated animate__bounce" href="prisma.html">Prisma</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="bola.html">Bola</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="dibuat.html">4Bit Girls</a> </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Konten Kalkulator Prisma Segitiga -->
+  <div class="p-2 mb-2 bg-danger-subtle">
+    <div class="container mt-3">
+      <h2 class="text-center mb-4">Kalkulator Prisma Segitiga</h2>
+      <div class="card p-4 mx-auto" style="max-width: 500px;">
+        <div class="mb-3">
+          <label for="alas" class="form-label">Alas Segitiga (cm)</label>
+          <input type="number" class="form-control" id="alas" placeholder="Masukkan alas">
+        </div>
+        <div class="mb-3">
+          <label for="tinggiSegitiga" class="form-label">Tinggi Segitiga (cm)</label>
+          <input type="number" class="form-control" id="tinggiSegitiga" placeholder="Masukkan tinggi segitiga">
+        </div>
+        <div class="mb-3">
+          <label for="tinggiPrisma" class="form-label">Tinggi Prisma (cm)</label>
+          <input type="number" class="form-control" id="tinggiPrisma" placeholder="Masukkan tinggi prisma">
+        </div>
+        <div class="mb-3">
+          <label for="sisiMiring" class="form-label">Sisi Miring Segitiga (cm)</label>
+          <input type="number" class="form-control" id="sisiMiring" placeholder="Masukkan sisi miring">
+        </div>
+        <button class="btn btn-primary w-100" onclick="hitungPrisma()">Hitung</button>
+        <div class="mt-4" id="hasil"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function hitungPrisma() {
+      var alas = parseFloat(document.getElementById("alas").value);
+      var tinggiSegitiga = parseFloat(document.getElementById("tinggiSegitiga").value);
+      var tinggiPrisma = parseFloat(document.getElementById("tinggiPrisma").value);
+      var sisiMiring = parseFloat(document.getElementById("sisiMiring").value);
+
+      if (isNaN(alas) || isNaN(tinggiSegitiga) || isNaN(tinggiPrisma) || isNaN(sisiMiring) || alas <= 0 || tinggiSegitiga <= 0 || tinggiPrisma <= 0 || sisiMiring <= 0) {
+        document.getElementById("hasil").innerHTML = '<div class="alert alert-danger">Mohon isi semua nilai dengan benar!</div>';
+        return;
+      }
+
+      // Hitung luas alas, volume, keliling, dan luas permukaan
+      var luasAlas = 0.5 * alas * tinggiSegitiga;
+      var volume = luasAlas * tinggiPrisma;
+      var kelilingAlas = alas + sisiMiring + tinggiSegitiga;
+      var luasPermukaan = (2 * luasAlas) + (kelilingAlas * tinggiPrisma);
+
+      // Tampilkan hasil
+      document.getElementById("hasil").innerHTML = `
+        <div class="alert alert-success">
+          <strong>Hasil Perhitungan:</strong><br>
+          Keliling Prisma: ${kelilingAlas.toFixed(2)} cm<br>
+          Volume Prisma: ${volume.toFixed(2)} cm³<br>
+          Luas Permukaan Prisma: ${luasPermukaan.toFixed(2)} cm²
+        </div>
+      `;
+    }
+  </script>
+
+  <!-- footer -->
+    <nav class="navbar fixed-bottom navbar navbar-expand-lg navbar-dark" style="background-color: #a04979;">
+        <div class="container justify-content-center">
+            <a class="navbar-brand text-white animate__animated animate__bounce">Hitung Bangun Ruang  &copy;2025</a>
+        </div>
+    </nav>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
