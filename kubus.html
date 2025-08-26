@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bangun Ruang Kubus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bg-danger-subtle">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a04979;">
+    <div class="container-fluid">
+      <a class="navbar-brand animate__animated animate__bounce" href="#">Aplikasi Hitung Bangun Ruang</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="beranda.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link active animate__animated animate__bounce" href="kubus.html">Kubus</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="tabung.html">Tabung</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="prisma.html">Prisma</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="bola.html">Bola</a></li>
+           <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="dibuat.html">4Bit Girls</a> </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Kalkulator Kubus -->
+  <div class="p-3 mb-2 text-dark">
+    <div class="container py-5">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="card-title mb-4 text-center text-bg-light p-2">Kalkulator Kubus</h3>
+          <div class="mb-3">
+            <label for="sisi" class="form-label">Masukkan sisi (cm):</label>
+            <input type="number" class="form-control" id="sisi" placeholder="Masukkan Angka" required>
+          </div>
+          <div class="d-grid mb-4">
+            <button class="btn btn-primary" id="hitungBtn">Hitung</button>
+          </div>
+          <div id="hasil" style="display: none;">
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Volume:</strong> <span id="volume">-</span></li>
+              <li class="list-group-item"><strong>Keliling:</strong> <span id="keliling">-</span></li>
+              <li class="list-group-item"><strong>Luas Permukaan:</strong> <span id="luas">-</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $('#hitungBtn').click(function () {
+      const sisi = parseFloat($('#sisi').val());
+      if (isNaN(sisi) || sisi <= 0) {
+        alert('Masukkan angka sisi yang valid.');
+        return;
+      }
+
+      const volume = Math.pow(sisi, 3);
+      const keliling = 12 * sisi;
+      const luas = 6 * Math.pow(sisi, 2);
+
+      $('#volume').text(`${volume} cm³`);
+      $('#keliling').text(`${keliling} cm`);
+      $('#luas').text(`${luas} cm²`);
+
+      // Tampilkan hasil
+      $('#hasil').slideDown();
+    });
+  </script>
+
+ <!-- footer -->
+    <nav class="navbar fixed-bottom navbar navbar-expand-lg navbar-dark" style="background-color: #a04979;">
+        <div class="container justify-content-center">
+            <a class="navbar-brand text-white animate__animated animate__bounce">Hitung Bangun Ruang  &copy;2025</a>
+        </div>
+    </nav>
+</body>
+</html>
