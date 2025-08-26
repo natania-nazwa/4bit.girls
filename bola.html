@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Bola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bg-primary-subtle">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a04979;">
+    <div class="container-fluid">
+      <a class="navbar-brand animate__animated animate__bounce" href="#">Aplikasi Hitung Bangun Ruang</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="beranda.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="kubus.html">Kubus</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="tabung.html">Tabung</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="prisma.html">Prisma</a></li>
+          <li class="nav-item"><a class="nav-link active animate__animated animate__bounce" href="bola.html">Bola</a></li>
+          <li class="nav-item"><a class="nav-link animate__animated animate__bounce" href="dibuat.html">4Bit Girls</a> </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Konten Kalkulator Bola -->
+  <div class="p-3 mb-2 text-dark">
+  <div class="container text-center mt-4">
+    <h1>Kalkulator Bola</h1>
+    <div class="d-flex justify-content-center align-items-center mt-4">
+      <div class="col-5">
+        <div class="card text-center p-4">
+          <input type="number" id="jari" class="form-control mb-3" placeholder="Masukkan jari-jari" required>
+          <button class="btn btn-primary col-6 mx-auto" id="hitungBtn">Hitung</button>
+
+          <div class="hasil-box mt-4" id="hasil" style="display: none;">
+            <div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis">
+              <h5>Volume:</h5>
+              <p id="volume">-</p>
+              <h5>Keliling:</h5>
+              <p id="keliling">-</p>
+              <h5>Luas Permukaan:</h5>
+              <p id="luas">-</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Script -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $('#hitungBtn').click(function () {
+      const jari = parseFloat($('#jari').val());
+      if (isNaN(jari) || jari <= 0) {
+        alert('Masukkan angka jari-jari yang valid.');
+        return;
+      }
+
+      const luas = 4 * Math.PI * Math.pow(jari, 2);
+      const keliling = 2 * Math.PI * jari;
+      const volume = (4 / 3) * Math.PI * Math.pow(jari, 3);
+
+      // Gunakan backtick ` untuk template literal
+      $('#luas').text(`${luas.toFixed(2)} cm²`);
+      $('#keliling').text(`${keliling.toFixed(2)} cm`);
+      $('#volume').text(`${volume.toFixed(2)} cm³`);
+
+      $('#hasil').slideDown();
+    });
+  </script>
+
+  <!-- Footer -->
+  <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark" style="background-color: #a04979;">
+    <div class="container justify-content-center">
+      <a class="navbar-brand text-white animate__animated animate__bounce">Hitung Bangun Ruang &copy;2025</a>
+    </div>
+  </nav>
+
+</body>
+</html>
